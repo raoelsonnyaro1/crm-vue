@@ -37,7 +37,7 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title><router-link :to="`${item.route}`">{{ item.title }}</router-link></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -54,12 +54,12 @@ export default {
   data: () => ({
         drawer: true,
         items: [
-          { title: 'Home', icon: 'mdi-home-city' },
-          { title: 'My Account', icon: 'mdi-account' },
-          { title: 'Département', icon: 'mdi-group' },
-          { title: 'Users', icon: 'mdi-account-group-outline' },
-          { title: 'Project', icon: 'mdi-list-box' },
-          { title: 'Logout', icon: 'mdi-logout' },
+          { title: 'Home',route:'/home', icon: 'mdi-home-city' },
+          { title: 'My Account',route:'', icon: 'mdi-account' },
+          { title: 'Département', route:'',icon: 'mdi-group' },
+          { title: 'Users',route:'', icon: 'mdi-account-group-outline' },
+          { title: 'Project',route:'project', icon: 'mdi-list-box' },
+          { title: 'Logout',route:'', icon: 'mdi-logout' },
         ],
         mini: true,
   }),
