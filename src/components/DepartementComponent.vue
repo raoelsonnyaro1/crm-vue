@@ -254,7 +254,7 @@ export default {
     data: () => ({
       dialog: false,
       dialogDelete: false,
-      title:'Utilisateur',
+      title:'Departement',
       search: '',
 
       headers: [
