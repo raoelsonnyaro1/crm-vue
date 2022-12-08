@@ -54,10 +54,10 @@ export default {
   data: () => ({
         drawer: true,
         items: [
-          { title: 'Home',route:'/home', icon: 'mdi-home-city' },
+          { title: 'Home',route:'home', icon: 'mdi-home-city' },
           { title: 'My Account',route:'', icon: 'mdi-account' },
           { title: 'Département', route:'',icon: 'mdi-group' },
-          { title: 'Users',route:'', icon: 'mdi-account-group-outline' },
+          { title: 'Users',route:'user', icon: 'mdi-account-group-outline' },
           { title: 'Project',route:'project', icon: 'mdi-list-box' },
           { title: 'Logout',route:'', icon: 'mdi-logout' },
         ],

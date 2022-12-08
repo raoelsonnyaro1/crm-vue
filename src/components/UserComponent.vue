@@ -18,7 +18,7 @@
       </v-card-title>
       <v-data-table
     :headers="headers"
-    :items="projects"
+    :items="users"
     :search="search"
     :items-per-page="5"
     sort-by="name"
@@ -28,7 +28,7 @@
       <v-toolbar
         flat
       >
-        <v-toolbar-title>PROJET</v-toolbar-title>
+        <v-toolbar-title>Utilisateurs</v-toolbar-title>
         <v-divider
           class="mx-4"
           inset
@@ -47,7 +47,7 @@
               v-bind="attrs"
               v-on="on"
             >
-              Nouveau projet
+              Nouvel utilisateur
             </v-btn>
           </template>
           <v-card>
@@ -64,8 +64,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.name"
-                      label="Name"
+                      v-model="editedItem.firstname"
+                      label="Prénom"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -74,8 +74,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.type"
-                      label="Type"
+                      v-model="editedItem.lastname"
+                      label="Nom"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -84,8 +84,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.duration"
-                      label="Duration"
+                      v-model="editedItem.birthDate"
+                      label="Date d'anniversaire"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -94,8 +94,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.description"
-                      label="Description"
+                      v-model="editedItem.sexe"
+                      label="Sexe"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -104,8 +104,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.status"
-                      label="Status"
+                      v-model="editedItem.email"
+                      label="Email"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -114,8 +114,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.client"
-                      label="Client"
+                      v-model="editedItem.password"
+                      label="Mot de passe"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -124,8 +124,38 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.responsibles"
-                      label="Responsibles"
+                      v-model="editedItem.clearPassword"
+                      label="ClearPassword"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="editedItem.matricule"
+                      label="Matricule"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="editedItem.role"
+                      label="Role"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="editedItem.departement"
+                      label="Departement"
                     ></v-text-field>
                   </v-col>
                 </v-row>
@@ -153,7 +183,7 @@
         </v-dialog>
         <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
-            <v-card-title class="text-h5">Vous êtes sure de supprimer ce projet?</v-card-title>
+            <v-card-title class="text-h5">Vous êtes sure de supprimer cet utilisateur?</v-card-title>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
@@ -224,48 +254,57 @@ export default {
     data: () => ({
       dialog: false,
       dialogDelete: false,
-      title:'Projet',
+      title:'Utilisateur',
       search: '',
 
       headers: [
         {
-          text: 'Nom du projet',
+          text: 'Nom',
           align: 'start',
-          value: 'name',
+          value: 'lastname',
         },
-        { text: 'Type', value: 'type' },
-        { text: 'Duration', value: 'duration' },
-        { text: 'Description', value: 'description' },
-        { text: 'Status', value: 'status' },
-        { text: 'Client', value: 'client' },
-        { text: 'Responsable', value: 'responsibles' },
+        { text: 'Prénom', value: 'firstname' },
+        { text: 'Date de naissance', value: 'birthDate' },
+        { text: 'Sexe', value: 'sexe' },
+        { text: 'Email', value: 'email' },
+        { text: 'Password', value: 'password' },
+        { text: 'ClearPassword', value: 'clearPassword' },
+        { text: 'Matricule', value: 'matricule' },
+        { text: 'Role', value: 'role' },
+        { text: 'Departement', value: 'departement' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
-      projects: [],
+      users: [],
       editedIndex: -1,
       editedItem: {
-        name: '',
-          type: '',
-          duration: '',
-          description: '',
-          status: '',
-          client: '',
-          responsibles: '',
+        lastname: '',
+        firstname: '',
+        birthDate: '',
+        sexe: '',
+        email: '',
+        password: '',
+        clearPassword: '',
+        matricule: '',
+        role: '',
+        departement: '',
       },
       defaultItem: {
-        name: '',
-          type: '',
-          duration: '',
-          description: '',
-          status: '',
-          client: '',
-          responsibles: '',
+        lastname: '',
+        firstname: '',
+        birthDate: '',
+        sexe: '',
+        email: '',
+        password: '',
+        clearPassword: '',
+        matricule: '',
+        role: '',
+        departement: '',
       },
     }),
 
     computed: {
       formTitle () {
-        return this.editedIndex === -1 ? 'Nouveau projet' : 'Modifier le projet'
+        return this.editedIndex === -1 ? 'Nouvel utilisateur' : 'Modifier utilisateur'
       },
     },
 
@@ -284,33 +323,36 @@ export default {
 
     methods: {
       initialize () {
-        this.projects = [
+        this.users = [
           {
-          name: 'branding',
-          type: 'branding',
-          duration: '90',
-          description: 'test',
-          status: 'wip',
-          client: 'Jovena',
-          responsibles: 'NyAro',
+        lastname: 'RAOEL',
+        firstname: 'Ny',
+        birthDate: '20/09/95',
+        sexe: 'male',
+        email: 'ny@gmail.com',
+        password: 'password',
+        clearPassword: 'password',
+        matricule: '20/09/95Ny',
+        role: '',
+        departement: '',
           },
         ]
       },
 
       editItem (item) {
-        this.editedIndex = this.projects.indexOf(item)
+        this.editedIndex = this.users.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialog = true
       },
 
       deleteItem (item) {
-        this.editedIndex = this.projects.indexOf(item)
+        this.editedIndex = this.users.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialogDelete = true
       },
 
       deleteItemConfirm () {
-        this.projects.splice(this.editedIndex, 1)
+        this.users.splice(this.editedIndex, 1)
         this.closeDelete()
       },
 
@@ -332,9 +374,9 @@ export default {
 
       save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.projects[this.editedIndex], this.editedItem)
+          Object.assign(this.users[this.editedIndex], this.editedItem)
         } else {
-          this.projects.push(this.editedItem)
+          this.users.push(this.editedItem)
         }
         this.close()
       },
