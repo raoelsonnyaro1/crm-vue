@@ -54,11 +54,11 @@ export default {
   data: () => ({
         drawer: true,
         items: [
-          { title: 'Home',route:'home', icon: 'mdi-home-city' },
-          { title: 'My Account',route:'', icon: 'mdi-account' },
-          { title: 'Département', route:'departement',icon: 'mdi-group' },
-          { title: 'Users',route:'user', icon: 'mdi-account-group-outline' },
-          { title: 'Project',route:'project', icon: 'mdi-list-box' },
+          { title: 'Accueil',route:'home', icon: 'mdi-home-city' },
+          { title: 'Mon compte',route:'', icon: 'mdi-account' },
+          { title: 'Départements', route:'departement',icon: 'mdi-group' },
+          { title: 'Utilisateurs',route:'user', icon: 'mdi-account-group-outline' },
+          { title: 'Projets',route:'project', icon: 'mdi-list-box' },
           { title: 'Logout',route:'', icon: 'mdi-logout' },
         ],
         mini: true,

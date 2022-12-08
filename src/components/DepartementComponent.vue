@@ -18,7 +18,7 @@
       </v-card-title>
       <v-data-table
     :headers="headers"
-    :items="users"
+    :items="departements"
     :search="search"
     :items-per-page="5"
     sort-by="name"
@@ -28,7 +28,7 @@
       <v-toolbar
         flat
       >
-        <v-toolbar-title>Utilisateurs</v-toolbar-title>
+        <v-toolbar-title>{{title}}</v-toolbar-title>
         <v-divider
           class="mx-4"
           inset
@@ -47,7 +47,7 @@
               v-bind="attrs"
               v-on="on"
             >
-              Nouvel utilisateur
+              Nouveau departement
             </v-btn>
           </template>
           <v-card>
@@ -64,100 +64,11 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.firstname"
-                      label="Prénom"
+                      v-model="editedItem.name"
+                      label="Nom departement"
                     ></v-text-field>
                   </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.lastname"
-                      label="Nom"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.birthDate"
-                      label="Date d'anniversaire"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.sexe"
-                      label="Sexe"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.email"
-                      label="Email"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.password"
-                      label="Mot de passe"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.clearPassword"
-                      label="ClearPassword"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.matricule"
-                      label="Matricule"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.role"
-                      label="Role"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.departement"
-                      label="Departement"
-                    ></v-text-field>
-                  </v-col>
+                  
                 </v-row>
               </v-container>
             </v-card-text>
@@ -183,7 +94,7 @@
         </v-dialog>
         <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
-            <v-card-title class="text-h5">Vous êtes sure de supprimer cet utilisateur?</v-card-title>
+            <v-card-title class="text-h5">Vous êtes sure de supprimer ce departement?</v-card-title>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
@@ -259,52 +170,25 @@ export default {
 
       headers: [
         {
-          text: 'Nom',
+          text: 'Nom departement',
           align: 'start',
-          value: 'lastname',
+          value: 'name',
         },
-        { text: 'Prénom', value: 'firstname' },
-        { text: 'Date de naissance', value: 'birthDate' },
-        { text: 'Sexe', value: 'sexe' },
-        { text: 'Email', value: 'email' },
-        { text: 'Password', value: 'password' },
-        { text: 'ClearPassword', value: 'clearPassword' },
-        { text: 'Matricule', value: 'matricule' },
-        { text: 'Role', value: 'role' },
-        { text: 'Departement', value: 'departement' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
-      users: [],
+      departements: [],
       editedIndex: -1,
       editedItem: {
-        lastname: '',
-        firstname: '',
-        birthDate: '',
-        sexe: '',
-        email: '',
-        password: '',
-        clearPassword: '',
-        matricule: '',
-        role: '',
-        departement: '',
+        name: ''
       },
       defaultItem: {
-        lastname: '',
-        firstname: '',
-        birthDate: '',
-        sexe: '',
-        email: '',
-        password: '',
-        clearPassword: '',
-        matricule: '',
-        role: '',
-        departement: '',
+        name: ''
       },
     }),
 
     computed: {
       formTitle () {
-        return this.editedIndex === -1 ? 'Nouvel utilisateur' : 'Modifier utilisateur'
+        return this.editedIndex === -1 ? 'Nouveau departement' : 'Modifier le departement'
       },
     },
 
@@ -323,36 +207,27 @@ export default {
 
     methods: {
       initialize () {
-        this.users = [
+        this.departements = [
           {
-        lastname: 'RAOEL',
-        firstname: 'Ny',
-        birthDate: '20/09/95',
-        sexe: 'male',
-        email: 'ny@gmail.com',
-        password: 'password',
-        clearPassword: 'password',
-        matricule: '20/09/95Ny',
-        role: 'admin',
-        departement: 'informatique',
+        name: 'informatique',
           },
         ]
       },
 
       editItem (item) {
-        this.editedIndex = this.users.indexOf(item)
+        this.editedIndex = this.departements.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialog = true
       },
 
       deleteItem (item) {
-        this.editedIndex = this.users.indexOf(item)
+        this.editedIndex = this.departements.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialogDelete = true
       },
 
       deleteItemConfirm () {
-        this.users.splice(this.editedIndex, 1)
+        this.departements.splice(this.editedIndex, 1)
         this.closeDelete()
       },
 
@@ -374,9 +249,9 @@ export default {
 
       save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.users[this.editedIndex], this.editedItem)
+          Object.assign(this.departements[this.editedIndex], this.editedItem)
         } else {
-          this.users.push(this.editedItem)
+          this.departements.push(this.editedItem)
         }
         this.close()
       },
