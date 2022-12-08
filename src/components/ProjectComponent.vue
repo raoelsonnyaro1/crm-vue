@@ -20,6 +20,7 @@
     :headers="headers"
     :items="desserts"
     :search="search"
+    :items-per-page="5"
     sort-by="name"
     class="elevation-1"
   >
@@ -152,7 +153,7 @@
         </v-dialog>
         <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
-            <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
+            <v-card-title class="text-h5">Vous êtes sure de supprimer ce projet?</v-card-title>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
