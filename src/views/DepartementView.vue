@@ -1,16 +1,16 @@
 <template>
-    <departement-compenent/>
+    <departement-component/>
   </template>
   
   <script>
 
-import DepartementCompenent from '@/components/DepartementCompenent.vue'
+import DepartementComponent from '@/components/DepartementComponent.vue'
   
     export default {
       name: 'Departement',
   
       components: {
-            DepartementCompenent,
+            DepartementComponent,
       },
     }
   </script>
