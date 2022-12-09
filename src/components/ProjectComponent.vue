@@ -1,9 +1,9 @@
 <template>
     <v-container
-    class="spacing-playground pa-6"
+    class="spacing-playground pa-6 grey lighten-5"
     fluid
   >
-    <v-card class="spacing-playground pa-6">
+    <v-card class="spacing-playground pa-6 elevation-2">
       <div class="d-flex justify-center">
       <h1>{{title}}</h1>
     </div>
@@ -22,7 +22,7 @@
     :search="search"
     :items-per-page="5"
     sort-by="name"
-    class="elevation-1"
+    class="pa-6"
   >
     <template v-slot:top>
       <v-toolbar
