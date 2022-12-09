@@ -54,7 +54,7 @@ export default {
   data: () => ({
         drawer: true,
         items: [
-          { title: 'Accueil',route:'home', icon: 'mdi-home-city' },
+          { title: 'Accueil',route:'/', icon: 'mdi-home-city' },
           { title: 'Mon compte',route:'', icon: 'mdi-account' },
           { title: 'Départements', route:'departement',icon: 'mdi-group' },
           { title: 'Utilisateurs',route:'user', icon: 'mdi-account-group-outline' },
