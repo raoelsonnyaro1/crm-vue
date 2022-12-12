@@ -213,7 +213,12 @@
     </v-card>
   </v-container>
   </template>
-
+  
+<style>
+.v-main__wrap{
+  background-color: #fafafa !important;
+}
+</style>
 <!-- <script>
 export default {
   data () {
