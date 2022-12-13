@@ -81,7 +81,11 @@
         </div>
         
     </div>
+    <div class="d-flex">
+            <div class="col-4">
     <Doughnut :data="chartData" />
+  </div>
+</div>
     </v-container>
    
     
