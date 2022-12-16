@@ -130,7 +130,7 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,
         labels: [ 'January', 'February', 'March'],
         datasets: [
           {
-            backgroundColor: '#f87979',
+            backgroundColor: ['#f87979', '#fff', '#000'],
             data: [40, 20, 12]
           }
         ]
