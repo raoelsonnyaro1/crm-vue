@@ -5,7 +5,11 @@
       <v-row class="justify-space-between px-6">
         <v-toolbar-title class="white-text">CRM</v-toolbar-title>
         <div>
-          <v-badge ><v-icon color="white">mdi-bell</v-icon></v-badge>
+          <v-badge 
+          :content="notifications"
+        :value="notifications"
+        color="green"
+        overlap><v-icon color="white">mdi-bell</v-icon></v-badge>
         </div>
       </v-row>
   
@@ -47,6 +51,7 @@ export default {
 
   data: () => ({
         drawer: false,
+        notifications:1,
         items: [
           { title: 'Accueil',route:'/', icon: 'mdi-home-city' },
           { title: 'Mon compte',route:'account', icon: 'mdi-account' },
