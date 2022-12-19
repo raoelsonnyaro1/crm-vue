@@ -8,7 +8,7 @@
       >
         <v-sheet
           class="v-sheet--offset mx-auto"
-          color="cyan"
+          color="#137C8B"
           elevation="12"
           max-width="calc(100% - 32px)"
         >
@@ -47,7 +47,7 @@
       >
         <v-sheet
           class="v-sheet--offset mx-auto"
-          color="cyan"
+          color="#137C8B"
           elevation="12"
           max-width="calc(100% - 32px)"
         >
@@ -130,7 +130,7 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,
         labels: [ 'January', 'February', 'March'],
         datasets: [
           {
-            backgroundColor: ['#f87979', '#fff', '#000'],
+            backgroundColor: ['#137C8B', '#709CA7', '#B8CBD0'], //Palette de couleur : #137C8B, #709CA7, #B8CBD0 , #7A90A4,#344D59
             data: [40, 20, 12]
           }
         ]
