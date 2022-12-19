@@ -1,5 +1,5 @@
 <template>
-    <v-container class="grey lighten-5">
+    <v-container>
         <div class="d-flex">
             <div class="col-6">
             <v-card

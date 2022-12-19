@@ -1,6 +1,6 @@
 <template>
     <v-container>
-      <v-row justify="space-around pa-6">
+      <v-row justify="space-around" class="pa-6">
         <v-card width="400">
           <v-img
             height="200px"
