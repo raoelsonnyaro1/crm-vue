@@ -1,17 +1,38 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from "axios";
+
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
+const users_uri = "http://localhost:5000/api/v1/users";
+
+const state = {
+  users: [],
+};
+
+const getters = {
+  users: (state) => state.users,
+};
+
+const mutations = {
+  setUsers: (state, users) => (state.users = users),
+};
+
+const actions = {
+  async fetchUsers({ commit }) {
+    const response = await axios.get(users_uri);
+    commit("setUsers", response.data);
   },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+}
+
+let store = new Vuex.Store({
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions,
+});
+
+global.store = store;
+
+export default store;

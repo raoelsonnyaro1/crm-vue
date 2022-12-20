@@ -255,7 +255,14 @@ export default {
 }
 </script> -->
 <script>
+import store from "@/store";
+import Vuex from "vuex";
+
+global.v = Vuex;
+
   export default {
+    store: store,
+    name: "User",
     data: () => ({
       dialog: false,
       dialogDelete: false,
@@ -308,6 +315,8 @@ export default {
     }),
 
     computed: {
+      ...Vuex.mapGetters(["user"]),
+
       formTitle () {
         return this.editedIndex === -1 ? 'Nouvel utilisateur' : 'Modifier utilisateur'
       },
@@ -327,22 +336,22 @@ export default {
     },
 
     methods: {
-      initialize () {
-        this.users = [
-          {
-        lastname: 'RAOEL',
-        firstname: 'Ny',
-        birthDate: '20/09/95',
-        sexe: 'male',
-        email: 'ny@gmail.com',
-        password: 'password',
-        clearPassword: 'password',
-        matricule: '20/09/95Ny',
-        role: 'admin',
-        departement: 'informatique',
-          },
-        ]
-      },
+      // initialize () {
+      //   this.users = [
+      //     {
+      //   lastname: 'RAOEL',
+      //   firstname: 'Ny',
+      //   birthDate: '20/09/95',
+      //   sexe: 'male',
+      //   email: 'ny@gmail.com',
+      //   password: 'password',
+      //   clearPassword: 'password',
+      //   matricule: '20/09/95Ny',
+      //   role: 'admin',
+      //   departement: 'informatique',
+      //     },
+      //   ]
+      // },
 
       editItem (item) {
         this.editedIndex = this.users.indexOf(item)
@@ -386,5 +395,9 @@ export default {
         this.close()
       },
     },
+
+    mounted() {
+    this.$store.dispatch("fetchUsers");
+  },
   }
 </script>
