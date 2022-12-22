@@ -286,7 +286,7 @@ global.v = Vuex;
         { text: 'Departement', value: 'departement' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
-      users: [],
+      // users: [],
       editedIndex: -1,
       editedItem: {
         lastname: '',
@@ -315,7 +315,7 @@ global.v = Vuex;
     }),
 
     computed: {
-      ...Vuex.mapGetters(["user"]),
+      ...Vuex.mapGetters(["users"]),
 
       formTitle () {
         return this.editedIndex === -1 ? 'Nouvel utilisateur' : 'Modifier utilisateur'
