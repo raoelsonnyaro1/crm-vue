@@ -25,7 +25,7 @@
 
       <v-divider></v-divider>
       <v-list>
-        <v-list-item v-for="item in items" :key="item.title" @click="item.action">
+        <v-list-item v-for="item in items" :key="item.title">
           <v-list-item-icon>
             <v-icon color="white">{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -35,9 +35,9 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-content>
+    <v-main>
       <router-view/>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 <style>
