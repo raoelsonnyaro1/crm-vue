@@ -154,7 +154,7 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.departement"
+                      v-model="editedItem.departement.name"
                       label="Departement"
                     ></v-text-field>
                   </v-col>
@@ -283,7 +283,7 @@ global.v = Vuex;
         { text: 'ClearPassword', value: 'clearPassword' },
         { text: 'Matricule', value: 'matricule' },
         { text: 'Role', value: 'role' },
-        { text: 'Departement', value: 'departement' },
+        { text: 'Departement', value: 'departement.name' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       // users: [],
