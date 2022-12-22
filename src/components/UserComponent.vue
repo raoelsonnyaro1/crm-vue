@@ -331,9 +331,9 @@ global.v = Vuex;
       },
     },
 
-    created () {
-      this.initialize()
-    },
+    // created () {
+    //   this.initialize()
+    // },
 
     methods: {
       // initialize () {
