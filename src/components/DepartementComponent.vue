@@ -161,7 +161,12 @@ export default {
 }
 </script> -->
 <script>
+import store from "@/store";
+import Vuex from "vuex";
+
+global.v = Vuex;
   export default {
+    store: store,
     data: () => ({
       dialog: false,
       dialogDelete: false,
@@ -176,7 +181,7 @@ export default {
         },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
-      departements: [],
+      // departements: [],
       editedIndex: -1,
       editedItem: {
         name: ''
@@ -187,6 +192,8 @@ export default {
     }),
 
     computed: {
+      ...Vuex.mapGetters(["departements"]),
+      
       formTitle () {
         return this.editedIndex === -1 ? 'Nouveau departement' : 'Modifier le departement'
       },
@@ -201,18 +208,18 @@ export default {
       },
     },
 
-    created () {
-      this.initialize()
-    },
+    // created () {
+    //   this.initialize()
+    // },
 
     methods: {
-      initialize () {
-        this.departements = [
-          {
-        name: 'informatique',
-          },
-        ]
-      },
+      // initialize () {
+      //   this.departements = [
+      //     {
+      //   name: 'informatique',
+      //     },
+      //   ]
+      // },
 
       editItem (item) {
         this.editedIndex = this.departements.indexOf(item)
@@ -255,6 +262,10 @@ export default {
         }
         this.close()
       },
+    },
+
+    mounted() {
+    this.$store.dispatch("fetchDepartements");
     },
   }
 </script>

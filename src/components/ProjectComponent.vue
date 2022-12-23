@@ -220,7 +220,12 @@ export default {
 }
 </script> -->
 <script>
+import store from "@/store";
+import Vuex from "vuex";
+
+global.v = Vuex;
   export default {
+    store: store,
     data: () => ({
       dialog: false,
       dialogDelete: false,
@@ -241,7 +246,7 @@ export default {
         { text: 'Responsable', value: 'responsibles' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
-      projects: [],
+      // projects: [],
       editedIndex: -1,
       editedItem: {
         name: '',
@@ -264,6 +269,8 @@ export default {
     }),
 
     computed: {
+      ...Vuex.mapGetters(["projects"]),
+
       formTitle () {
         return this.editedIndex === -1 ? 'Nouveau projet' : 'Modifier le projet'
       },
@@ -278,24 +285,24 @@ export default {
       },
     },
 
-    created () {
-      this.initialize()
-    },
+    // created () {
+    //   this.initialize()
+    // },
 
     methods: {
-      initialize () {
-        this.projects = [
-          {
-          name: 'branding',
-          type: 'branding',
-          duration: '90',
-          description: 'test',
-          status: 'wip',
-          client: 'Jovena',
-          responsibles: 'NyAro',
-          },
-        ]
-      },
+      // initialize () {
+      //   this.projects = [
+      //     {
+      //     name: 'branding',
+      //     type: 'branding',
+      //     duration: '90',
+      //     description: 'test',
+      //     status: 'wip',
+      //     client: 'Jovena',
+      //     responsibles: 'NyAro',
+      //     },
+      //   ]
+      // },
 
       editItem (item) {
         this.editedIndex = this.projects.indexOf(item)
@@ -338,6 +345,10 @@ export default {
         }
         this.close()
       },
+    },
+
+    mounted() {
+    this.$store.dispatch("fetchProjects");
     },
   }
 </script>
