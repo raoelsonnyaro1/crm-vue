@@ -34,7 +34,7 @@ const routes = [
     path: '/account',
     name: 'account',
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
+    // this generates a separate chunk (account.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: function () {
       return import(/* webpackChunkName: "account" */ '../views/AccountView.vue')
@@ -44,7 +44,7 @@ const routes = [
     path: '/departement',
     name: 'departement',
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
+    // this generates a separate chunk (departement.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: function () {
       return import(/* webpackChunkName: "departement" */ '../views/DepartementView.vue')
@@ -54,7 +54,7 @@ const routes = [
     path: '/project',
     name: 'project',
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
+    // this generates a separate chunk (project.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: function () {
       return import(/* webpackChunkName: "project" */ '../views/ProjectView.vue')
@@ -64,10 +64,20 @@ const routes = [
     path: '/user',
     name: 'user',
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
+    // this generates a separate chunk (user.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: function () {
       return import(/* webpackChunkName: "user" */ '../views/UserView.vue')
+    }
+  },
+  {
+    path: '/client',
+    name: 'client',
+    // route level code-splitting
+    // this generates a separate chunk (client.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: function () {
+      return import(/* webpackChunkName: "client" */ '../views/ClientView.vue')
     }
   }
 ]

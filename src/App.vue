@@ -58,6 +58,7 @@ export default {
           { title: 'Départements', route:'departement',icon: 'mdi-group' },
           { title: 'Utilisateurs',route:'user', icon: 'mdi-account-group-outline' },
           { title: 'Projets',route:'project', icon: 'mdi-list-box' },
+          { title: 'Clients',route:'client', icon: 'mdi-list-box' },
           { title: 'Logout',route:'', icon: 'mdi-logout' },
         ],
         // mini: false,

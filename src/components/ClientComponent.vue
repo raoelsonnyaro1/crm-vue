@@ -18,7 +18,7 @@
       </v-card-title>
       <v-data-table
     :headers="headers"
-    :items="projects"
+    :items="clients"
     :search="search"
     :items-per-page="5"
     sort-by="name"
@@ -28,7 +28,7 @@
       <v-toolbar
         flat
       >
-        <v-toolbar-title>PROJET</v-toolbar-title>
+        <v-toolbar-title>{{title}}</v-toolbar-title>
         <v-divider
           class="mx-4"
           inset
@@ -47,7 +47,7 @@
               v-bind="attrs"
               v-on="on"
             >
-              Nouveau projet
+              Nouveau client
             </v-btn>
           </template>
           <v-card>
@@ -65,7 +65,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.name"
-                      label="Name"
+                      label="Nom Client"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -74,8 +74,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.type"
-                      label="Type"
+                      v-model="editedItem.activity_type"
+                      label="Type d'activité"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -84,8 +84,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.duration"
-                      label="Duration"
+                      v-model="editedItem.email"
+                      label="Email"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -94,8 +94,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.description"
-                      label="Description"
+                      v-model="editedItem.phone"
+                      label="Phone"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -104,30 +104,11 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.status"
-                      label="Status"
+                      v-model="editedItem.location"
+                      label="Location"
                     ></v-text-field>
                   </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.client"
-                      label="Client"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.responsibles"
-                      label="Responsibles"
-                    ></v-text-field>
-                  </v-col>
+                  
                 </v-row>
               </v-container>
             </v-card-text>
@@ -153,7 +134,7 @@
         </v-dialog>
         <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
-            <v-card-title class="text-h5">Vous êtes sure de supprimer ce projet?</v-card-title>
+            <v-card-title class="text-h5">Vous êtes sure de supprimer ce client?</v-card-title>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
@@ -229,50 +210,52 @@ global.v = Vuex;
     data: () => ({
       dialog: false,
       dialogDelete: false,
-      title:'Projet',
+      title:'Client',
       search: '',
 
       headers: [
         {
-          text: 'Nom du projet',
+          text: 'Nom client',
           align: 'start',
           value: 'name',
         },
-        { text: 'Type', value: 'type' },
-        { text: 'Duration', value: 'duration' },
-        { text: 'Description', value: 'description' },
-        { text: 'Status', value: 'status' },
-        { text: 'Client', value: 'client.name' },
-        { text: 'Responsable', value: 'responsibles' },
+        {
+          text: 'Type activité',
+          value: 'activity_type',
+        },
+        {
+          text: 'Email',
+          value: 'email',
+        },
+        {
+          text: 'Phone',
+          value: 'phone',
+        },
+        {
+          text: 'Location',
+          value: 'location',
+        },
+        {
+          text: 'Date adhésion',
+          value: 'createdAt',
+        },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
-      // projects: [],
+      // clients: [],
       editedIndex: -1,
       editedItem: {
-        name: '',
-          type: '',
-          duration: '',
-          description: '',
-          status: '',
-          client: '',
-          responsibles: '',
+        name: ''
       },
       defaultItem: {
-        name: '',
-          type: '',
-          duration: '',
-          description: '',
-          status: '',
-          client: '',
-          responsibles: '',
+        name: ''
       },
     }),
 
     computed: {
-      ...Vuex.mapGetters(["projects"]),
-
+      ...Vuex.mapGetters(["clients"]),
+      
       formTitle () {
-        return this.editedIndex === -1 ? 'Nouveau projet' : 'Modifier le projet'
+        return this.editedIndex === -1 ? 'Nouveau client' : 'Modifier le client'
       },
     },
 
@@ -291,33 +274,27 @@ global.v = Vuex;
 
     methods: {
       // initialize () {
-      //   this.projects = [
+      //   this.clients = [
       //     {
-      //     name: 'branding',
-      //     type: 'branding',
-      //     duration: '90',
-      //     description: 'test',
-      //     status: 'wip',
-      //     client: 'Jovena',
-      //     responsibles: 'NyAro',
+      //   name: 'informatique',
       //     },
       //   ]
       // },
 
       editItem (item) {
-        this.editedIndex = this.projects.indexOf(item)
+        this.editedIndex = this.clients.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialog = true
       },
 
       deleteItem (item) {
-        this.editedIndex = this.projects.indexOf(item)
+        this.editedIndex = this.clients.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialogDelete = true
       },
 
       deleteItemConfirm () {
-        this.projects.splice(this.editedIndex, 1)
+        this.clients.splice(this.editedIndex, 1)
         this.closeDelete()
       },
 
@@ -339,16 +316,16 @@ global.v = Vuex;
 
       save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.projects[this.editedIndex], this.editedItem)
+          Object.assign(this.clients[this.editedIndex], this.editedItem)
         } else {
-          this.projects.push(this.editedItem)
+          this.clients.push(this.editedItem)
         }
         this.close()
       },
     },
 
     mounted() {
-    this.$store.dispatch("fetchProjects");
+    this.$store.dispatch("fetchClients");
     },
   }
 </script>
