@@ -68,6 +68,16 @@
                       label="Nom departement"
                     ></v-text-field>
                   </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="editedItem.description"
+                      label="Description"
+                    ></v-text-field>
+                  </v-col>
                   
                 </v-row>
               </v-container>
@@ -179,6 +189,10 @@ global.v = Vuex;
           align: 'start',
           value: 'name',
         },
+        {
+          text: 'Description',
+          value: 'description',
+        },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       // departements: [],
@@ -213,13 +227,9 @@ global.v = Vuex;
     // },
 
     methods: {
-      // initialize () {
-      //   this.departements = [
-      //     {
-      //   name: 'informatique',
-      //     },
-      //   ]
-      // },
+      ...Vuex.mapActions({
+      addDepartementStore: "addDepartement",
+    }),
 
       editItem (item) {
         this.editedIndex = this.departements.indexOf(item)
@@ -258,7 +268,8 @@ global.v = Vuex;
         if (this.editedIndex > -1) {
           Object.assign(this.departements[this.editedIndex], this.editedItem)
         } else {
-          this.departements.push(this.editedItem)
+          this.addDepartementStore(this.editedItem)
+          // this.departements.push(this.editedItem)
         }
         this.close()
       },

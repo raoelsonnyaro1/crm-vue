@@ -40,10 +40,26 @@ const actions = {
     const response = await axios.get(projects_uri);
     commit("setProjects", response.data);
   },
+
+  // Departement
   async fetchDepartements({ commit }) {
     const response = await axios.get(departements_uri);
     commit("setDepartements", response.data);
   },
+
+  async addDepartement({ commit, state }, payload) {
+    const response = await axios.post(departements_uri, payload);
+    commit("setDepartements", [
+      ...state.departements,
+      {
+        // id: state.departements[state.departements.length - 1].id + 1,
+        name: payload.name,
+        description: payload.description,
+      },
+    ]);
+  },
+
+
   async fetchClients({ commit }) {
     const response = await axios.get(clients_uri);
     commit("setClients", response.data);
