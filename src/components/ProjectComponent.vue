@@ -290,19 +290,9 @@ global.v = Vuex;
     // },
 
     methods: {
-      // initialize () {
-      //   this.projects = [
-      //     {
-      //     name: 'branding',
-      //     type: 'branding',
-      //     duration: '90',
-      //     description: 'test',
-      //     status: 'wip',
-      //     client: 'Jovena',
-      //     responsibles: 'NyAro',
-      //     },
-      //   ]
-      // },
+      ...Vuex.mapActions({
+      addProjectStore: "addProject",
+    }),
 
       editItem (item) {
         this.editedIndex = this.projects.indexOf(item)
@@ -341,7 +331,8 @@ global.v = Vuex;
         if (this.editedIndex > -1) {
           Object.assign(this.projects[this.editedIndex], this.editedItem)
         } else {
-          this.projects.push(this.editedItem)
+          this.addProjectStore(this.editedItem)
+          // this.projects.push(this.editedItem)
         }
         this.close()
       },

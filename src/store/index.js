@@ -36,9 +36,28 @@ const actions = {
     const response = await axios.get(users_uri);
     commit("setUsers", response.data);
   },
+
+  // Project
   async fetchProjects({ commit }) {
     const response = await axios.get(projects_uri);
     commit("setProjects", response.data);
+  },
+  
+  async addProject({ commit, state }, payload) {
+    const response = await axios.post(projects_uri, payload);
+    commit("setProjects", [
+      ...state.projects,
+      {
+        // id: state.departements[state.departements.length - 1].id + 1,
+        name: payload.name,
+        type: payload.type,
+        duration: payload.duration,
+        description: payload.description,
+        status: payload.status,
+        client: payload.client,
+        responsibles: payload.responsibles,
+      },
+    ]);
   },
 
   // Departement
@@ -59,10 +78,25 @@ const actions = {
     ]);
   },
 
-
+// Clients
   async fetchClients({ commit }) {
     const response = await axios.get(clients_uri);
     commit("setClients", response.data);
+  },
+
+  async addClient({ commit, state }, payload) {
+    const response = await axios.post(clients_uri, payload);
+    commit("setClients", [
+      ...state.clients,
+      {
+        // id: state.departements[state.departements.length - 1].id + 1,
+        name: payload.name,
+        activity_type: payload.activity_type,
+        email: payload.email,
+        phone: payload.phone,
+        location: payload.location,
+      },
+    ]);
   },
 }
 

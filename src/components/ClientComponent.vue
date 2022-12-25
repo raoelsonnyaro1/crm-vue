@@ -273,13 +273,9 @@ global.v = Vuex;
     // },
 
     methods: {
-      // initialize () {
-      //   this.clients = [
-      //     {
-      //   name: 'informatique',
-      //     },
-      //   ]
-      // },
+      ...Vuex.mapActions({
+      addClientStore: "addClient",
+    }),
 
       editItem (item) {
         this.editedIndex = this.clients.indexOf(item)
@@ -318,7 +314,8 @@ global.v = Vuex;
         if (this.editedIndex > -1) {
           Object.assign(this.clients[this.editedIndex], this.editedItem)
         } else {
-          this.clients.push(this.editedItem)
+          this.addClientStore(this.editedItem)
+          // this.clients.push(this.editedItem)
         }
         this.close()
       },
