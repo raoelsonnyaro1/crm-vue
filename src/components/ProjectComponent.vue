@@ -114,9 +114,19 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.client"
+                      v-model="editedItem.client.name"
                       label="Client"
                     ></v-text-field>
+                  </v-col>
+                  <v-col
+                    class="d-flex"
+                    cols="12"
+                    sm="6"
+                  >
+                    <v-select
+                      :items="editedItem.client.name"
+                      label="Client"
+                    ></v-select>
                   </v-col>
                   <v-col
                     cols="12"

@@ -54,7 +54,7 @@ const actions = {
         duration: payload.duration,
         description: payload.description,
         status: payload.status,
-        client: payload.client,
+        client: payload.client.name,
         responsibles: payload.responsibles,
       },
     ]);
