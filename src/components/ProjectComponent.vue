@@ -108,7 +108,7 @@
                       label="Status"
                     ></v-text-field>
                   </v-col>
-                  <!-- <v-col
+                  <v-col
                     cols="12"
                     sm="6"
                     md="4"
@@ -117,8 +117,8 @@
                       v-model="editedItem.client.name"
                       label="Client"
                     ></v-text-field>
-                  </v-col> -->
-                  <v-col
+                  </v-col>
+                  <!-- <v-col
                     class="d-flex"
                     cols="12"
                     sm="6"
@@ -127,7 +127,7 @@
                       :items="editedItem.client.name"
                       label="Client"
                     ></v-select>
-                  </v-col>
+                  </v-col> -->
                   <v-col
                     cols="12"
                     sm="6"
