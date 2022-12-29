@@ -108,7 +108,7 @@
                       label="Status"
                     ></v-text-field>
                   </v-col>
-                  <v-col
+                  <!-- <v-col
                     cols="12"
                     sm="6"
                     md="4"
@@ -117,7 +117,7 @@
                       v-model="editedItem.client.name"
                       label="Client"
                     ></v-text-field>
-                  </v-col>
+                  </v-col> -->
                   <v-col
                     class="d-flex"
                     cols="12"
@@ -256,7 +256,7 @@ global.v = Vuex;
         { text: 'Responsable', value: 'responsibles' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
-      // projects: [],
+      clients: [],
       editedIndex: -1,
       editedItem: {
         name: '',
@@ -350,6 +350,7 @@ global.v = Vuex;
 
     mounted() {
     this.$store.dispatch("fetchProjects");
+    this.$store.dispatch("fetchClients");
     },
   }
 </script>
